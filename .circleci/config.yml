@@ -1,1 +1,18 @@
-
+version: 2.1
+executors:
+  default-executor:
+    docker:
+      - image: cimg/base:stable
+jobs:
+  build:
+    executor: default-executor
+    steps:
+      - checkout
+      - run:
+          name: Print CircleCI Environment Variables
+          command: env
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
